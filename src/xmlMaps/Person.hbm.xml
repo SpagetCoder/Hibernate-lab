@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.Person" table="Persons">
+        <id name="id" type="int">
+            <column name="Person_ID"/>
+            <generator class="native"/>
+        </id>
+
+        <property name="fName" type="java.lang.String"/>
+        <property name="sName" type="java.lang.String"/>
+        <property name="ssn" type="java.lang.String"/>
+        <many-to-one cascade="save-update" class="model.Adress" 
+                     column="Addres_ID" foreign-key="FK_Address" 
+                     name="adress" unique="false"/>
+        
+    </class>
+
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <joined-subclass extends="model.Person" lazy="false" 
+                   name="model.FlightInstructor" table="Flight_Instructors">
+    <key foreign-key="FK_FlightInstructor_Person" >
+      <column name="FlightInsttuctor_ID"/>
+    </key>
+   <property name="licenceNo" type="int"/>
+   <property name="valid" type="converted::goodies.BooleanConverter"/>
+   
+   <set inverse="true" lazy="true" name="flights">
+      <key foreign-key="FK_Flight_FlightInstructor">
+        <column name="Flight_ID"/>
+      </key>
+      <one-to-many class="model.Flights"/>
+    </set>
+        
+  </joined-subclass>
+</hibernate-mapping>

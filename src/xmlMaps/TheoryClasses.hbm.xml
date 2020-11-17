@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="model.TheoryClasses" table="Theory_Classes">
+        <id name="id" type="int">
+            <column name="TheoryClasses_ID"/>
+            <generator class="native"/>
+        </id>
+
+        <property name="name" type="java.lang.String"/>
+        <property name="hours" type="java.lang.Integer"/>
+        <property name="grade" type="java.lang.Float"/>
+        
+        <set inverse="true" lazy="true" 
+        name="students" table="Student_Theory_Classes">
+            <key foreign-key="FK_TheoryClasses_Student">
+              <column name="TheoryClasses_ID"/>
+            </key>
+            <many-to-many class="model.Student" column="Student_ID"/>
+        </set>
+        
+        
+    </class>
+
+</hibernate-mapping>

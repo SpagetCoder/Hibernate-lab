@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+  <class name="model.Flights" table="Flights">
+    <id name="id" type="int">
+      <column name="Flight_ID"/>
+      <generator class="native"/>
+    </id>
+    <property name="date" type="java.time.LocalDate"/>
+    <property name="hours" type="java.lang.Integer"/>
+    <property name="description" type="java.lang.String" length="500"/>
+    <many-to-one cascade="save-update" class="model.FlightInstructor" 
+                 column="FI_ID" 
+                 foreign-key="FK_Flight_FlightInstructor" name="flightInstructor" unique="false"/>
+    <many-to-one cascade="save-update" class="model.Student" column="Student_ID" 
+                 foreign-key="FK_Flight_Student" name="student" unique="false"/>
+    
+    
+  </class>
+</hibernate-mapping>

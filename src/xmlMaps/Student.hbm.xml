@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <joined-subclass extends="model.Person" lazy="false" name="model.Student"
+                     table="Students" >
+        <key foreign-key="FK_Students_Person">
+            <column name="Student_ID"/>
+        </key>
+        
+        <property name="medicalTest" type="java.lang.String"/>
+        
+        <set inverse="true" lazy="true" name="flights">
+            <key>
+              <column name="Flight_ID"/>
+            </key>
+            <one-to-many class="model.Flights"/>
+         </set>
+
+        <set  inverse="false" lazy="true" name="courses" cascade="save-update" table="Student_Courses">
+            <key foreign-key="FK_Student_Course">
+                <column name="Student_ID"/>
+            </key>
+            <many-to-many class="model.Course" column="Course_ID"/>
+        </set>
+        
+        <set inverse="false" lazy="true" name="theoryClasses" cascade="save-update" table="Student_Theory_Classes">
+            <key foreign-key="FK_Student_TheoryClasses">
+              <column name="Student_ID"/>
+            </key>
+            <many-to-many class="model.TheoryClasses" column="TheoryClasses_ID"/>
+         </set>
+    
+    </joined-subclass>
+</hibernate-mapping>
