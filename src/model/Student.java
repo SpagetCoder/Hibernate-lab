@@ -21,13 +21,13 @@ import org.hibernate.annotations.Cascade;
  * @author Luke
  */
 @Entity
-@PrimaryKeyJoinColumn(name = "Student", foreignKey = @javax.persistence.ForeignKey(name="Student_ID"))
+@PrimaryKeyJoinColumn(name = "Student_ID", foreignKey = @javax.persistence.ForeignKey(name="FK_Students_Person"))
 @Table(name="Students")
 public class Student extends Person implements Serializable
 {
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(name="Students_Theoryclasses",
+    @JoinTable(name="Student_Theory_Classes",
         joinColumns=@JoinColumn(name="Student_ID"),
         inverseJoinColumns=@JoinColumn(name="TheoryClasses_ID"),
         foreignKey = @javax.persistence.ForeignKey(name="FK_Student_TheoryClasses"), 
@@ -37,12 +37,12 @@ public class Student extends Person implements Serializable
     @OneToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     @JoinColumn(name="Student_ID",
-        foreignKey = @javax.persistence.ForeignKey(name = "FK_Student_Flights"))
+        foreignKey = @javax.persistence.ForeignKey(name = "FK_Flight_Student"))
     private Set<Flights> flights;
         
     @ManyToMany
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinTable(name="Students_Courses",
+    @JoinTable(name="Student_Courses",
         joinColumns=@JoinColumn(name="Student_ID"),
         inverseJoinColumns=@JoinColumn(name="Course_ID"),
         foreignKey = @javax.persistence.ForeignKey(name="FK_Course_Student"), 

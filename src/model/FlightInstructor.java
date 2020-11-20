@@ -14,8 +14,8 @@ import javax.persistence.Table;
  * @author Luke
  */
 @Entity
-@PrimaryKeyJoinColumn(name = "FligthInstructor_ID", foreignKey = @javax.persistence.ForeignKey(name="FK_FligthInstructor_Person"))
-@Table(name="FlightInstructors")
+@PrimaryKeyJoinColumn(name = "FligthInstuctor_ID", foreignKey = @javax.persistence.ForeignKey(name="FK_FlightInstructor_Person"))
+@Table(name="Flight_Instructors")
 public class FlightInstructor extends Person implements Serializable
 {
     private int licenceNo;

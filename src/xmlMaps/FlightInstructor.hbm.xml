@@ -5,7 +5,7 @@
   <joined-subclass extends="model.Person" lazy="false" 
                    name="model.FlightInstructor" table="Flight_Instructors">
     <key foreign-key="FK_FlightInstructor_Person" >
-      <column name="FlightInsttuctor_ID"/>
+      <column name="FligthInstuctor_ID"/>
     </key>
    <property name="licenceNo" type="int"/>
    <property name="valid" type="converted::goodies.BooleanConverter"/>

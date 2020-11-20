@@ -13,7 +13,7 @@
         
         <set inverse="true" lazy="true" 
         name="students" table="Student_Theory_Classes">
-            <key foreign-key="FK_TheoryClasses_Student">
+            <key foreign-key="FK_Student_TheoryClasses">
               <column name="TheoryClasses_ID"/>
             </key>
             <many-to-many class="model.Student" column="Student_ID"/>

@@ -49,7 +49,7 @@ public final class DataQueries {
         }
     }
 
-    public void explicitJPQL(SessionFactory SESSION_FACTORY) {
+    public void expliciteJPQL(SessionFactory SESSION_FACTORY) {
 
         try (Session session = SESSION_FACTORY.openSession()) {
             Query query = session.createQuery("select fi.fName, fi.sName, fi.ssn, f.date from FlightInstructor fi join Flights f on fi.id = f.id", Tuple.class);
@@ -59,11 +59,11 @@ public final class DataQueries {
         }
     }
 
-    public void implicitJPQL(SessionFactory SESSION_FACTORY) {
+    public void impliciteJPQL(SessionFactory SESSION_FACTORY) {
 
         try (Session session = SESSION_FACTORY.openSession()) {
 
-            Query query = session.createQuery("select a.city, a.street, a.postalCode from Adress a where a.country like 'Germany'", Tuple.class);
+            Query query = session.createQuery("select p.adress.city, p.adress.street, p.adress.postalCode from Person p where p.adress.country like 'Germany'", Tuple.class);
             List<Tuple> result = query.getResultList();
             result.forEach(t -> {System.out.println(t.get(0) + " " + t.get(1) + " " + t.get(2));
             });
@@ -109,7 +109,7 @@ public final class DataQueries {
         }
     }
 
-    public void explicitCriteria(SessionFactory SESSION_FACTORY)
+    public void expliciteCriteria(SessionFactory SESSION_FACTORY)
     {
         try (Session session = SESSION_FACTORY.openSession())
         {
@@ -130,20 +130,20 @@ public final class DataQueries {
         }
     }
 
-    public void implicitCriteria(SessionFactory SESSION_FACTORY) 
+    public void impliciteCriteria(SessionFactory SESSION_FACTORY) 
     {
         try (Session session = SESSION_FACTORY.openSession()) 
         {
             CriteriaBuilder builder = session.getCriteriaBuilder();
             CriteriaQuery query = builder.createTupleQuery();           
-            Root<Adress> root = query.from(Adress.class);
+            Root<Person> root = query.from(Person.class);
             
             query.multiselect(
-                    root.get(Adress_.city),
-                    root.get(Adress_.street),
-                    root.get(Adress_.postalCode)
+                    root.get(Person_.ADRESS).get(Adress_.CITY),
+                    root.get(Person_.ADRESS).get(Adress_.STREET),
+                    root.get(Person_.ADRESS).get(Adress_.POSTAL_CODE)
             );
-            query.where(builder.equal(root.get(Adress_.COUNTRY), ("Germany")));
+            query.where(builder.equal(root.get(Person_.ADRESS).get(Adress_.COUNTRY), ("Germany")));
             List<Tuple> result = session.createQuery(query)
                     .getResultList();
             result.forEach(t -> { System.out.println(t.get(0) + " " + t.get(1) + " " + t.get(2));

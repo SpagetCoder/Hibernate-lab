@@ -43,7 +43,7 @@ public class Flights implements Serializable {
     
     @ManyToOne
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinColumn(name="Student_ID",foreignKey = @javax.persistence.ForeignKey(name = "FK_Flight_FlightInstructor"))
+    @JoinColumn(name="Student_ID",foreignKey = @javax.persistence.ForeignKey(name = "FK_Flight_Student"))
     private Student student;
 
     public Flights() {

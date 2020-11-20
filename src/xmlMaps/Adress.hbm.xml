@@ -4,7 +4,7 @@
 <hibernate-mapping>
     <class name="model.Adress" table="Addresses">
         <id name="id" type="int">
-            <column name="Adress_ID"/>
+            <column name="Address_ID"/>
             <generator class="native"/>
         </id>
         <property name="country" type="java.lang.String"/>

@@ -38,7 +38,7 @@ public class Person implements Serializable
     
     @ManyToOne
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinColumn(name="Adress_ID", foreignKey = @javax.persistence.ForeignKey(name = "FK_Addres"))
+    @JoinColumn(name="Address_ID", foreignKey = @javax.persistence.ForeignKey(name = "FK_Address"))
     private Adress adress;
 
     public String getSsn() {
