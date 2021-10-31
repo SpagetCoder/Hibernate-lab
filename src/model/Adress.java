@@ -30,6 +30,9 @@ public class Adress implements Serializable
     private String postalCode;
     private String street;
     
+    @OneToMany(mappedBy = "address")
+    private Set<Person> persons;
+    
     public Adress(String country, String city, String postalCode, String street) {
         this.country = country;
         this.city = city;
@@ -88,5 +91,11 @@ public class Adress implements Serializable
         this.street = street;
     }
     
-    
+        public Set<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(Set<Person> persons) {
+        this.persons = persons;
+    }    
 }
