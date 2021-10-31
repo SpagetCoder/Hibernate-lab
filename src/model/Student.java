@@ -34,10 +34,8 @@ public class Student extends Person implements Serializable
         inverseForeignKey = @javax.persistence.ForeignKey(name="FK_TheoryClasses_Student"))
     private Set<TheoryClasses> theoryClasses;
     
-    @OneToMany
+    @OneToMany(mappedBy = "student")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @JoinColumn(name="Student_ID",
-        foreignKey = @javax.persistence.ForeignKey(name = "FK_Flight_Student"))
     private Set<Flights> flights;
         
     @ManyToMany
