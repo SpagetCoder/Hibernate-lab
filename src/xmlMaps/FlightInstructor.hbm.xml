@@ -12,7 +12,7 @@
    
    <set inverse="true" lazy="true" name="flights">
       <key foreign-key="FK_Flight_FlightInstructor">
-        <column name="Flight_ID"/>
+        <column name="FligthInstuctor_ID"/>
       </key>
       <one-to-many class="model.Flights"/>
     </set>
