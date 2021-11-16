@@ -11,7 +11,7 @@
         
         <set inverse="true" lazy="true" name="flights">
             <key>
-              <column name="Flight_ID"/>
+              <column name="Student_ID"/>
             </key>
             <one-to-many class="model.Flights"/>
          </set>
